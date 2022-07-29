@@ -17,3 +17,17 @@ let db,
         db = client.db(dbName)
         collection = db.collection('template')
      })
+
+
+     //middlewares 
+
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use(cors())
+
+//local port
+app.listen(process.env.PORT ||PORT,()=>{
+      console.log(`Server is running on port ${process.env.PORT}`)
+})
